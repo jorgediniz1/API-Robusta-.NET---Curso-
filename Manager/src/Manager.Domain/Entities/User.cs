@@ -1,16 +1,22 @@
+using System;
+using System.Collections.Generic;
+using Manager.Domain.Validators;
+using FluentValidation;
+
+
 namespace Manager.Domain.Entities
 {
     public class User : Base
     {
   
         public string Name { get; private set; }
-        public strinf Email { get; private set; }
+        public string Email { get; private set; }
         public string Password { get; private set; }
 
 
-        protected User(){} //Construtor para o EF. 
+        protected User(){} //Construtor vazio para o EF. 
 
-        public User(string name, strinf email, string password)
+        public User(string name, string email, string password)
         {
             Name = name;
             Email = email;
@@ -38,7 +44,16 @@ namespace Manager.Domain.Entities
 
         public override bool Validate()
         {
-            
+            var validator = new UserValidator(); //Classe que vai validar
+            var validation = validator.Validate(this); //Recebe o resultado
+
+            if(!validation.IsValid){
+                foreach(var error in validation.Errors)
+                _errors.Add(error.ErrorMessage);
+                throw new Exception("Alguns campos estão inválidos." + _errors[0]);
+            }
+
+            return true;
         }
 
     }

@@ -1,4 +1,9 @@
+using System.Threading.Tasks;
 using Manager.Domain.Entities;
+using System.Collections.Generic;
+using Manager.Infra.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Manager.Infra.Context;
 
 namespace Manager.Infra.Repositories{
     public class UserRepository : BaseRepository<User>, IUserRepository
@@ -34,12 +39,10 @@ namespace Manager.Infra.Repositories{
         var allUser = await _context.Users
                                     .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                                     .AsNoTracking()
-                                    .ToListAsync();
-        return allUser;                      
+                                    .ToListAsync();                         
+        return allUser;    
+                          
     }
-
-    
-
 
     }
 }

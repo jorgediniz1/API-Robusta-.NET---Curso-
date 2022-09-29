@@ -1,13 +1,14 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore; 
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;  
 using Manager.Domain.Entities;
-using Manager.Infra.Interfaces; 
+using Manager.Infra.Interfaces;
 using Manager.Infra.Context;
 
 namespace Manager.Infra.Repositories
 {
-    public class BaseRepositories<T> : IBaseRepository<T> where T : Base
+    public class BaseRepository<T> : IBaseRepository<T> where T : Base
     {
         private readonly ManagerContext _context;
         public BaseRepository(ManagerContext context)
@@ -28,6 +29,7 @@ namespace Manager.Infra.Repositories
            await _context.SaveChangesAsync();
 
            return obj;
+           
         }
 
         public virtual async Task Remove(long id)
@@ -38,10 +40,11 @@ namespace Manager.Infra.Repositories
             {
                 _context.Remove(obj);
                 await _context.SaveChangesAsync();
+               
             }            
         }
 
-        public virtual async Task<T> Get (long id)
+        public virtual async Task<T> Get(long id)
         {
             var obj = await _context.Set<T>()
                                     .AsNoTracking() //

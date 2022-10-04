@@ -19,7 +19,7 @@ namespace Manager.Infra.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optBuilder)
         {
-            optBuilder.UseSqlServer("server=localhost\\SQLEXPRESS;Database=USERMANAGERAPI;User Id=sa; Password=ceub");
+            optBuilder.UseSqlServer("server=localhost;Database=USERMANAGERAPI;User Id=SA; Password=Jorge@l0n3");
         }
         
     }

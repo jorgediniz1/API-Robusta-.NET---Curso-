@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Manager.Domain.Validators;
-using FluentValidation;
-
+using Manager.Core.Exceptions;
 
 namespace Manager.Domain.Entities
 {
@@ -50,7 +48,8 @@ namespace Manager.Domain.Entities
             if(!validation.IsValid){
                 foreach(var error in validation.Errors)
                 _errors.Add(error.ErrorMessage);
-                throw new Exception("Alguns campos estão inválidos." + _errors[0]);
+                
+                throw new DomainException("Alguns campos estão inválidos.", _errors);
             }
 
             return true;

@@ -16,11 +16,7 @@ namespace Manager.Infra.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new UserMap());
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optBuilder)
-        {
-            optBuilder.UseSqlServer("server=localhost;Database=USERMANAGERAPI;User Id=SA; Password=Jorge@l0n3");
-        }
+        }     
         
     }
 } 

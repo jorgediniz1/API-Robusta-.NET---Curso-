@@ -15,7 +15,7 @@ namespace Manager.Infra.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new UserMap());
+            builder.ApplyConfiguration(new UserMap()); //Mudar para From Assemply
         }     
         
     }

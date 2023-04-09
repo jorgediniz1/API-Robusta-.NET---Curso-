@@ -1,7 +1,7 @@
 using Manager.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Manager.API.Configuration
+namespace Manager.API.ConfigurationStartup
 {
     public static class EFConfiguration
     {

@@ -1,4 +1,4 @@
-namespace Manager.API.Configuration
+namespace Manager.API.ConfigurationStartup
 {
 
     public static class PipeLineConfiguration
@@ -14,6 +14,8 @@ namespace Manager.API.Configuration
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
+           
             app.UseAuthorization();
 
         }        

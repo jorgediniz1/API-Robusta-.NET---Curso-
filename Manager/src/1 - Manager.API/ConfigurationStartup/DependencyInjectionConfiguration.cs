@@ -1,4 +1,5 @@
 using AutoMapper;
+using Manager.API.Token;
 using Manager.API.ViewModels;
 using Manager.Domain.Entities;
 using Manager.Infra.Interfaces;
@@ -19,8 +20,8 @@ namespace Manager.API.ConfigurationStartup
             //Injeção Serviços
 
 
-            
-            #region
+            //JWT
+            #region 
             var secretKey = config["Jwt:Key"];
             
             //ASP.NET --> define qual o esquema de autenticação (esquema JWT)
@@ -42,7 +43,7 @@ namespace Manager.API.ConfigurationStartup
                     ValidateAudience = false
                 };
             });
-            #endregion
+            #endregion 
 
             services.AddControllers();
 
@@ -56,6 +57,7 @@ namespace Manager.API.ConfigurationStartup
             services.AddSingleton(autoMapperConfig.CreateMapper());
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITokenGenerator, TokenGenerator>();
 
             
         }

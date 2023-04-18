@@ -1,4 +1,4 @@
-using Manager.API.ConfigurationStartup;
+  using Manager.API.ConfigurationStartup;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
